@@ -9,7 +9,7 @@ import kotlin.test.assertEquals
 class LocalDateTimeFormatterTest {
 
     @Test
-    fun `test format LocalDateTime FullDateTimeFormatter`() {
+    fun test_format_LocalDateTime_FullDateTimeFormatter() {
         val formatter = FullDateTimeFormatter
         val localDateTime = LocalDateTime(2023, 1, 1, 1, 1)
         val expected = "01/01/2023 - 01:01"
@@ -18,7 +18,7 @@ class LocalDateTimeFormatterTest {
     }
 
     @Test
-    fun `test format LocalDateTime MonthYearFormatter`() {
+    fun test_format_LocalDateTime_MonthYearFormatter() {
         val formatter = MonthYearFormatter
         val localDateTime = LocalDateTime(2023, 1, 1, 1, 1)
         val expected = "01/2023"
@@ -27,7 +27,7 @@ class LocalDateTimeFormatterTest {
     }
 
     @Test
-    fun `test format LocalDateTime DateFormatter`() {
+    fun test_format_LocalDateTime_DateFormatter() {
         val formatter = DateFormatter
         val localDateTime = LocalDate(2023, 1, 1)
         val expected = "01/01/2023"
@@ -36,7 +36,7 @@ class LocalDateTimeFormatterTest {
     }
 
     @Test
-    fun `test format LocalDateTime TimeFormatter`() {
+    fun test_format_LocalDateTime_TimeFormatter() {
         val formatter = TimeFormatter
         val localDateTime = LocalTime(1, 1, 1)
         val expected = "01:01"
@@ -48,7 +48,7 @@ class LocalDateTimeFormatterTest {
     }
 
     @Test
-    fun `test parse to SqlDateTimeFormatter`() {
+    fun test_parse_to_SqlDateTimeFormatter() {
         val formatter = SqlDateTimeFormatter
         val localDateTime = LocalDateTime(2023, 1, 1, 1, 1)
         assertEquals(
@@ -58,7 +58,7 @@ class LocalDateTimeFormatterTest {
     }
 
     @Test
-    fun `test parse DateFormatter to LocalDate`() {
+    fun test_parse_DateFormatter_to_LocalDate() {
         val formatter = DateFormatter
         val expected = LocalDate(2023, 1, 1)
         assertEquals(
@@ -68,12 +68,22 @@ class LocalDateTimeFormatterTest {
     }
 
     @Test
-    fun `test parse TimeFormatter to LocalTime`() {
+    fun test_parse_TimeFormatter_to_LocalTime() {
         val formatter = TimeFormatter
         val expected = LocalTime(1, 8, 0)
         assertEquals(
             expected,
             formatter.parseToLocalTime("01:08")
+        )
+    }
+
+    @Test
+    fun test_parse_to_PolishLocaleDateTimeFormatter() {
+        val formatter = PolishLocaleDateTimeFormatter
+        val localDateTime = LocalDateTime(2024, 1, 8, 18, 47, 12)
+        assertEquals(
+            localDateTime,
+            formatter.parseToLocalDateTime("pon., 8 sty 2024 18:47:12")
         )
     }
 
@@ -88,5 +98,7 @@ class LocalDateTimeFormatterTest {
             .ofPattern("dd/MM/yyyy", Locale.en())
         val TimeFormatter: LocalDateTimeFormatter = LocalDateTimeFormatter
             .ofPattern("HH:mm", Locale.en())
+        val PolishLocaleDateTimeFormatter: LocalDateTimeFormatter = LocalDateTimeFormatter
+            .ofPattern("EEE, d MMM yyyy HH:mm:ss", Locale.forLanguageTag("pl-PL"))
     }
 }

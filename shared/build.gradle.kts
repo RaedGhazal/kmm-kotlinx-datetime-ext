@@ -49,6 +49,21 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
     jvm("desktop")
+    js(IR) {
+        useEsModules()
+        browser {
+            testTask {
+                useKarma {
+                    useChromeHeadless()
+                }
+            }
+        }
+        nodejs {
+            testTask {
+                useMocha()
+            }
+        }
+    }
 
     sourceSets {
         commonMain.dependencies {
@@ -56,6 +71,9 @@ kotlin {
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+        }
+        jsMain.dependencies {
+            implementation(npm("date-fns", libs.versions.date.fns.version.get()))
         }
     }
 }

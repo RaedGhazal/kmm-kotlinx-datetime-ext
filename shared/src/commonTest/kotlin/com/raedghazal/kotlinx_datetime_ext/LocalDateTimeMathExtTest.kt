@@ -11,21 +11,21 @@ import kotlin.time.Duration.Companion.minutes
 class LocalDateTimeMathExtTest {
 
     @Test
-    fun `add hours and minutes to LocalDateTime by Duration`() {
+    fun add_hours_and_minutes_to_LocalDateTime_by_Duration() {
         val localDateTime = LocalDateTime(2023, 1, 1, 0, 0)
         val expected = LocalDateTime(2023, 1, 1, 7, 35)
         assertEquals(expected, localDateTime + 35.minutes + 7.hours)
     }
 
     @Test
-    fun `minus days to LocalDateTime by Duration`() {
+    fun minus_days_to_LocalDateTime_by_Duration() {
         val localDateTime = LocalDateTime(2023, 5, 14, 0, 0)
         val expected = LocalDateTime(2023, 5, 7, 0, 0)
         assertEquals(expected, localDateTime - 7.days)
     }
 
     @Test
-    fun `add minutes to start of year`() {
+    fun add_minutes_to_start_of_year() {
         val localDateTime = LocalDateTime(2023, 1, 1, 0, 0)
         val expected = LocalDateTime(2023, 1, 1, 0, 2)
 
@@ -34,7 +34,7 @@ class LocalDateTimeMathExtTest {
     }
 
     @Test
-    fun `add hours to end of the day`() {
+    fun add_hours_to_end_of_the_day() {
         val localDateTime = LocalDateTime(2023, 1, 7, 21, 0)
         val expected = LocalDateTime(2023, 1, 8, 4, 0)
 
@@ -43,7 +43,7 @@ class LocalDateTimeMathExtTest {
     }
 
     @Test
-    fun `add days to beginning of the month`() {
+    fun add_days_to_beginning_of_the_month() {
         val localDateTime = LocalDateTime(2023, 1, 1, 0, 0)
         val expected = LocalDateTime(2023, 1, 6, 0, 0)
 
@@ -52,7 +52,7 @@ class LocalDateTimeMathExtTest {
     }
 
     @Test
-    fun `add days to end of the month`() {
+    fun add_days_to_end_of_the_month() {
         val localDateTime = LocalDateTime(2023, 1, 31, 0, 0)
         val expected = LocalDateTime(2023, 2, 5, 0, 0)
 
@@ -61,7 +61,7 @@ class LocalDateTimeMathExtTest {
     }
 
     @Test
-    fun `subtract minutes from start of the year`() {
+    fun subtract_minutes_from_start_of_the_year() {
         val localDateTime = LocalDateTime(2023, 1, 1, 0, 0)
         val expected = LocalDateTime(2022, 12, 31, 23, 58)
 
@@ -70,7 +70,7 @@ class LocalDateTimeMathExtTest {
     }
 
     @Test
-    fun `subtract hours from end of the day`() {
+    fun subtract_hours_from_end_of_the_day() {
         val localDateTime = LocalDateTime(2023, 1, 7, 21, 0)
         val expected = LocalDateTime(2023, 1, 7, 14, 0)
 
@@ -79,7 +79,7 @@ class LocalDateTimeMathExtTest {
     }
 
     @Test
-    fun `subtract days from beginning of the month`() {
+    fun subtract_days_from_beginning_of_the_month() {
         val localDateTime = LocalDateTime(2023, 7, 1, 0, 0)
         val expected = LocalDateTime(2023, 6, 30, 0, 0)
 
@@ -88,7 +88,7 @@ class LocalDateTimeMathExtTest {
     }
 
     @Test
-    fun `subtract days from end of the month`() {
+    fun subtract_days_from_end_of_the_month() {
         val localDateTime = LocalDateTime(2023, 1, 31, 0, 0)
         val expected = LocalDateTime(2023, 1, 28, 0, 0)
 
